@@ -1,0 +1,1115 @@
+P2 - ALGORITMOS E ESTRUTURA DE DADOS
+ALUNO: GABRIEL ANDRÉ BARRETO OLIMPIO DOS SANTOS
+DATA: 19/06/2024
+
+----------------------------------------------------------------------
+
+# QUESTAO 1
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#define TAMANHO_PILHA 20
+
+typedef struct{
+
+        int vetor[TAMANHO_PILHA]; //tamanho da pilha
+
+        int topo;
+
+}Pilha;
+
+
+//prototipo da função empilha
+
+void empilha(int valor,Pilha *P1){
+
+        //pilha->topo significa: ponteiro "pilha" apontando para CONTEÚDO de um item de uma struct
+
+        if(P1->topo < TAMANHO_PILHA){ //verificando se a pilha não está cheia
+
+        //daí pode empilhar
+
+        P1->vetor[P1->topo]=valor;
+
+        P1->topo++;
+
+        printf("O valor %d foi adicionado \n",valor);
+
+        }else{
+
+                printf("Nao ha mais espaco na pilha, \n");
+
+        }
+
+}
+
+void desempilha(Pilha *P1){
+
+        if(P1->topo > 0){
+
+                P1->topo--; //desempilha
+
+                printf("Elemento retirado: %d. \n",P1->vetor[P1->topo]);
+
+        }else{
+
+                printf("A pilha está vazia. \n"); //pilha vazia
+
+        }
+
+}
+
+void imprimePilha(Pilha *P1){
+
+        int i;
+
+        printf("\nSegue Impressao da Pilha: \n");
+
+        for(i=((P1->topo)-1);i>=0;i--){ //valor inicial de i é a ultima posição da pilha e daí decrementa
+
+                printf("\t %d \n",P1->vetor[i]);
+
+        }
+
+}
+
+
+int main() {
+
+        //DECLARA UMA PILHA
+
+        Pilha P1;
+        Pilha P2;
+
+        P1.topo=0; // o topo da pilha deve começar em zero
+        P2.topo=0;
+
+        // Pilha 1
+        empilha(50, &P1);
+        empilha(110, &P1);
+        empilha(22067, &P1);
+        desempilha(&P1);
+        imprimePilha(&P1);
+
+
+        // Pilha 2
+        empilha(555, &P2);
+        empilha(77767, &P2);
+        empilha(88867, &P2);
+        desempilha(&P2);
+        imprimePilha(&P2);
+
+}
+
+----------------------------------------------------------------------
+# QUESTAO 2
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#define TAMANHO_PILHA 20
+
+typedef struct{
+
+        int vetor[TAMANHO_PILHA]; //tamanho da pilha
+
+        int topo;
+
+}Pilha;
+
+
+//prototipo da função empilha
+
+void empilha(int valor,Pilha *P1){
+
+        //pilha->topo significa: ponteiro "pilha" apontando para CONTEÚDO de um item de uma struct
+
+        if(P1->topo < TAMANHO_PILHA){ //verificando se a pilha não está cheia
+
+        //daí pode empilhar
+
+        P1->vetor[P1->topo]=valor;
+
+        P1->topo++;
+
+        printf("O valor %d foi adicionado \n",valor);
+
+        }else{
+
+                printf("Nao ha mais espaco na pilha, \n");
+
+        }
+
+}
+
+void desempilha(Pilha *P1){
+
+        if(P1->topo > 0){
+
+            P1->topo--; //desempilha
+
+            printf("Elemento retirado: %d. \n",P1->vetor[P1->topo]);
+
+        }else{
+
+            printf("A pilha está vazia. \n"); //pilha vazia
+
+        }
+
+}
+
+void imprimePilha(Pilha *P1){
+
+        int i;
+
+        printf("\nSegue Impressao da Pilha: \n");
+
+        for(i=((P1->topo)-1);i>=0;i--){ //valor inicial de i é a ultima posição da pilha e daí decrementa
+
+                printf("\t %d \n",P1->vetor[i]);
+
+        }
+
+}
+
+int mais_elementos(Pilha *p1, Pilha *p2){
+    if(p1->topo > p2->topo){
+        printf("Pilha 1 eh a maior, topo da P1: %d \n", p1->vetor[p1->topo-1]);
+    } else {
+        printf("Pilha 2 eh a maior, topo da P2: %d \n", p2->vetor[p2->topo-1]);
+    }
+    return 0;
+}
+
+
+int main() {
+
+    //DECLARA UMA PILHA
+
+        Pilha P1;
+        Pilha P2;
+
+    // o topo da pilha deve começar em zero
+        P1.topo=0; 
+        P2.topo=0; 
+
+
+        empilha(10, &P1);
+        empilha(98, &P1);
+        empilha(132, &P1);
+        empilha(46, &P1);
+        empilha(55, &P1);
+        empilha(555, &P1);
+        empilha(777, &P1);
+
+
+
+        empilha(111, &P2);
+        empilha(26, &P2);
+        empilha(177, &P2);
+        empilha(34, &P2);
+        empilha(65, &P2);
+        empilha(77, &P2);
+    
+    
+    mais_elementos(&P1, &P2);
+
+
+}
+
+----------------------------------------------------------------------
+# QUESTAO 3
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#define TAMANHO_PILHA 20
+
+typedef struct{
+
+        int vetor[TAMANHO_PILHA]; //tamanho da pilha
+
+        int topo;
+
+}Pilha;
+
+
+//prototipo da função empilha
+
+void empilha(int valor,Pilha *P1){
+
+        //pilha->topo significa: ponteiro "pilha" apontando para CONTEÚDO de um item de uma struct
+
+        if(P1->topo < TAMANHO_PILHA){ //verificando se a pilha não está cheia
+
+        //daí pode empilhar
+
+        P1->vetor[P1->topo]=valor;
+
+        P1->topo++;
+
+        printf("O valor %d foi adicionado \n",valor);
+
+        }else{
+
+                printf("Nao ha mais espaco na pilha, \n");
+
+        }
+
+}
+
+void desempilha(Pilha *P1){
+
+        if(P1->topo > 0){
+
+                P1->topo--; //desempilha
+
+                printf("Elemento retirado: %d. \n",P1->vetor[P1->topo]);
+
+        }else{
+
+                printf("A pilha está vazia. \n"); //pilha vazia
+
+        }
+
+}
+
+void imprimePilha(Pilha *P1){
+
+        int i;
+
+        printf("\nSegue Impressao da Pilha: \n");
+
+        for(i=((P1->topo)-1);i>=0;i--){ //valor inicial de i é a ultima posição da pilha e daí decrementa
+
+                printf("\t %d \n",P1->vetor[i]);
+
+        }
+
+}
+
+void encontrar_numero(int num, Pilha *p1){
+        int cont;
+        for(int i = 0; i<=p1->topo; i++){
+                if(num == p1->vetor[i]){
+                        printf("O numero %d foi encontrado na pilha \n", num);
+                        break;
+                } else {
+                        cont++;
+                }
+                if(cont == p1->topo) {
+                        printf("O numero %d NAO foi encontrado na pilha \n", num);
+                } 
+        }
+        
+}
+
+
+int main() {
+
+        //DECLARA UMA PILHA
+
+        Pilha P1;
+
+        P1.topo=0; // o topo da pilha deve começar em zero
+
+        empilha(10,&P1);
+        empilha(98, &P1);
+        empilha(132, &P1);
+        empilha(46, &P1);
+        empilha(55, &P1);
+        empilha(555, &P1);       
+
+        encontrar_numero(10, &P1);
+}
+
+
+----------------------------------------------------------------------
+# QUESTAO 4
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#define TAMANHO_PILHA 20
+
+typedef struct{
+
+        int vetor[TAMANHO_PILHA]; //tamanho da pilha
+
+        int topo;
+
+}Pilha;
+
+
+//prototipo da função empilha
+
+void empilha(int valor,Pilha *P1){
+
+        //pilha->topo significa: ponteiro "pilha" apontando para CONTEÚDO de um item de uma struct
+
+        if(P1->topo < TAMANHO_PILHA){ //verificando se a pilha não está cheia
+
+        //daí pode empilhar
+
+        P1->vetor[P1->topo]=valor;
+
+        P1->topo++;
+
+        printf("O valor %d foi adicionado \n",valor);
+
+        }else{
+
+                printf("Nao ha mais espaco na pilha, \n");
+
+        }
+
+}
+
+void desempilha(Pilha *P1){
+
+        if(P1->topo > 0){
+
+                P1->topo--; //desempilha
+
+                printf("Elemento retirado: %d. \n",P1->vetor[P1->topo]);
+
+        }else{
+
+                printf("A pilha está vazia. \n"); //pilha vazia
+
+        }
+
+}
+
+void imprimePilha(Pilha *P){
+
+        int i;
+
+        printf("\nSegue Impressao da Pilha: \n");
+
+        for(i=((P->topo)-2);i>=0;i--){ //valor inicial de i é a ultima posição da pilha e daí decrementa
+
+                printf("\t %d \n",P->vetor[i]);
+
+        }
+
+}
+
+
+int transferirElementos(Pilha *p1, Pilha *p2){
+
+        // verifica se a pilha esta vazia ou cheia
+        if(p1->topo >= TAMANHO_PILHA){
+                printf("+1");
+        } else if (p1->topo == 0) {
+                printf("-1");
+        } else {
+                printf("pilha nem cheia nem vazia, tamanho: %d \n", p1->topo);
+        }
+
+        // copia elementos da pilha 1 para a pilha 2
+        for(int i = 0; i<=p1->topo; i++){
+                p2->vetor[i] = p1->vetor[i];
+                p2->topo++;
+        }
+        imprimePilha(p2);
+        return 0;
+}
+
+int main() {
+
+        //DECLARA UMA PILHA
+
+        Pilha P1;
+        Pilha P2;
+
+        // o topo da pilha deve começar em zero
+        P1.topo=0; 
+        P2.topo=0; 
+
+        empilha(10, &P1);
+        empilha(98, &P1);
+        empilha(132, &P1);
+        empilha(46, &P1);
+        empilha(55, &P1);
+        empilha(555, &P1);
+        empilha(777, &P1);
+
+        transferirElementos(&P1, &P2);
+        
+
+}
+
+----------------------------------------------------------------------
+# QUESTAO 5
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#define TAMANHO_PILHA 20
+
+typedef struct{
+
+        int vetor[TAMANHO_PILHA]; //tamanho da pilha
+
+        int topo;
+
+}Pilha;
+
+
+//prototipo da função empilha
+
+void empilha(int valor,Pilha *P1){
+
+        //pilha->topo significa: ponteiro "pilha" apontando para CONTEÚDO de um item de uma struct
+
+        if(P1->topo < TAMANHO_PILHA){ //verificando se a pilha não está cheia
+
+        //daí pode empilhar
+
+        P1->vetor[P1->topo]=valor;
+
+        P1->topo++;
+
+        printf("O valor %d foi adicionado \n",valor);
+
+        }else{
+
+                printf("Nao ha mais espaco na pilha, \n");
+
+        }
+
+}
+
+void desempilha(Pilha *P1){
+
+        if(P1->topo > 0){
+
+                P1->topo--; //desempilha
+
+                printf("Elemento retirado: %d. \n",P1->vetor[P1->topo]);
+
+        }else{
+
+                printf("A pilha está vazia. \n"); //pilha vazia
+
+        }
+
+}
+
+void imprimePilha(Pilha *P1){
+
+        int i;
+
+        printf("\nSegue Impressao da Pilha: \n");
+
+        for(i=((P1->topo)-1);i>=0;i--){ //valor inicial de i é a ultima posição da pilha e daí decrementa
+
+                printf("\t %d \n",P1->vetor[i]);
+
+        }
+
+}
+
+int topo_p1_maior_que_p2(Pilha *p1, Pilha *p2){
+        int cont;
+        for(int i = 0; i<=p1->topo-1; i++){
+                if(p1->vetor[p1->topo] > p2->vetor[i-1]){
+                        cont++;
+                } else {
+                        printf(" O elemento %d da pilha 2 eh maior q o topo da pilha 1 \n", p2->vetor[i-1]);
+                        break;
+                }
+                if(cont == p2->topo){
+                        printf("Topo da pilha 1 eh maior que todos os elementos da pilha 2 \n");
+                }
+        }   
+        printf("Topo da pilha 1: %d \n", p1->vetor[p1->topo-1]);
+        return 0;
+}
+
+
+int main() {
+
+        //DECLARA UMA PILHA
+
+        Pilha P1;
+        Pilha P2;
+
+        P1.topo=0; // o topo da pilha deve começar em zero
+        P2.topo=0;
+
+        empilha(10, &P1);
+        empilha(98, &P1);
+        empilha(132, &P1);
+        empilha(46, &P1);
+        empilha(55, &P1);
+        empilha(555, &P1);
+        empilha(777, &P1);
+
+        empilha(111, &P2);
+        empilha(26, &P2);
+        empilha(177, &P2);
+        empilha(34, &P2);
+        empilha(65, &P2);
+        empilha(77, &P2);
+
+        topo_p1_maior_que_p2(&P1, &P2);
+
+
+
+
+}
+
+----------------------------------------------------------------------
+# QUESTAO 6
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#define TAMANHO_PILHA 20
+
+typedef struct{
+
+        int vetor[TAMANHO_PILHA]; //tamanho da pilha
+
+        int topo;
+
+}Pilha;
+
+
+//prototipo da função empilha
+
+void empilha(int valor,Pilha *P1){
+
+        //pilha->topo significa: ponteiro "pilha" apontando para CONTEÚDO de um item de uma struct
+
+        if(P1->topo < TAMANHO_PILHA){ //verificando se a pilha não está cheia
+
+        //daí pode empilhar
+
+        P1->vetor[P1->topo]=valor;
+
+        P1->topo++;
+
+        printf("O valor %d foi adicionado \n",valor);
+
+        }else{
+
+                printf("Nao ha mais espaco na pilha, \n");
+
+        }
+
+}
+
+void desempilha(Pilha *P1){
+
+        if(P1->topo > 0){
+
+                P1->topo--; //desempilha
+
+                printf("Elemento retirado: %d. \n",P1->vetor[P1->topo]);
+
+        }else{
+
+                printf("A pilha está vazia. \n"); //pilha vazia
+
+        }
+
+}
+
+void imprimePilha(Pilha *P1){
+
+        int i;
+
+        printf("\nSegue Impressao da Pilha: \n");
+
+        for(i=((P1->topo)-1);i>=0;i--){ //valor inicial de i é a ultima posição da pilha e daí decrementa
+
+                printf("\t %d \n",P1->vetor[i]);
+
+        }
+
+}
+
+void media(Pilha *p1){
+        int sum=0, div=0, med;
+        for(int i = 0; i<=p1->topo-1; i++){
+                sum = sum + p1->vetor[i];
+                div++;
+        }
+        med = sum/div;
+        printf("A media da pilha eh: %d \n", med);
+}
+
+
+int main() {
+
+        //DECLARA UMA PILHA
+
+        Pilha P1;
+
+        P1.topo=0; // o topo da pilha deve começar em zero
+
+        empilha(10, &P1);
+        empilha(8, &P1);
+        empilha(9, &P1);
+      
+        media(&P1);
+
+
+}
+
+----------------------------------------------------------------------
+# QUESTAO 7
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#define TAMANHO_PILHA 20
+
+typedef struct{
+
+        int vetor[TAMANHO_PILHA]; //tamanho da pilha
+
+        int topo;
+
+}Pilha;
+
+
+//prototipo da função empilha
+
+void empilha(int valor,Pilha *P1){
+
+        //pilha->topo significa: ponteiro "pilha" apontando para CONTEÚDO de um item de uma struct
+
+        if(P1->topo < TAMANHO_PILHA){ //verificando se a pilha não está cheia
+
+        //daí pode empilhar
+
+        P1->vetor[P1->topo]=valor;
+
+        P1->topo++;
+
+        printf("O valor %d foi adicionado \n",valor);
+
+        }else{
+
+                printf("Nao ha mais espaco na pilha, \n");
+
+        }
+
+}
+
+void desempilha(Pilha *P){
+
+        if(P->topo > 0){
+
+                P->topo--; //desempilha
+
+                printf("Elemento retirado: %d \n",P->vetor[P->topo]);
+
+        }else{
+
+                printf("A pilha está vazia. \n"); //pilha vazia
+
+        }
+
+}
+
+void imprimePilha(Pilha *P1){
+
+        int i;
+
+        printf("\nSegue Impressao da Pilha: \n");
+
+        for(i=((P1->topo)-1);i>=0;i--){ //valor inicial de i é a ultima posição da pilha e daí decrementa
+
+                printf("\t %d \n",P1->vetor[i]);
+
+        }
+
+}
+
+
+int retorna_remove_topo(Pilha *p1){
+        printf("Topo da pilha 1: %d \n", p1->vetor[p1->topo-1]);
+        desempilha(p1);
+        return 0;
+}
+
+
+int main() {
+
+        //DECLARA UMA PILHA
+
+        Pilha P1;
+
+        P1.topo=0; // o topo da pilha deve começar em zero
+
+        empilha(10, &P1);
+        empilha(8, &P1);
+        empilha(9, &P1);
+
+        retorna_remove_topo(&P1);       
+
+}
+
+----------------------------------------------------------------------
+# QUESTAO 8
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#define TAMANHO_PILHA 20
+
+typedef struct{
+
+        int vetor[TAMANHO_PILHA]; //tamanho da pilha
+
+        int topo;
+
+}Pilha;
+
+
+//prototipo da função empilha
+
+void empilha(int valor,Pilha *P1){
+
+        //pilha->topo significa: ponteiro "pilha" apontando para CONTEÚDO de um item de uma struct
+
+        if(P1->topo < TAMANHO_PILHA){ //verificando se a pilha não está cheia
+
+        //daí pode empilhar
+
+        P1->vetor[P1->topo]=valor;
+
+        P1->topo++;
+
+        printf("O valor %d foi adicionado \n",valor);
+
+        }else{
+
+                printf("Nao ha mais espaco na pilha, \n");
+
+        }
+
+}
+
+void desempilha(Pilha *P1){
+
+        if(P1->topo > 0){
+
+                P1->topo--; //desempilha
+
+                printf("Elemento retirado: %d. \n",P1->vetor[P1->topo]);
+
+        }else{
+
+                printf("A pilha está vazia. \n"); //pilha vazia
+
+        }
+
+}
+
+void imprimePilha(Pilha *P){
+
+        int i;
+
+        printf("\nSegue Impressao da Pilha: \n");
+
+        for(i=((P->topo)-1);i>=0;i--){ //valor inicial de i é a ultima posição da pilha e daí decrementa
+
+                printf("\t %d \n",P->vetor[i]);
+
+        }
+
+}
+
+void inverte_pilha(Pilha *p1, Pilha *p2){
+
+        // p2 é a pilha auxiliar que vai conter a pilha 1 invertida
+        // o loop começa no topo e adiciona o elemento do topo à pilha nova (p2)
+        for(int i = p1->topo - 1; i>= 0; i--){
+                p2->vetor[p2->topo] = p1->vetor[i];
+                p2->topo++;
+
+                // tambem pode ser feito chamando a funcao: empilha(p1->vetor[i], p2);
+        }
+
+        // utilizando função existente pra imprimir a pilha invertida
+        imprimePilha(p2);
+}
+
+int main() {
+
+        //DECLARA UMA PILHA
+
+        Pilha P1;
+        Pilha P2;
+
+        // o topo da pilha deve começar em zero
+        P1.topo=0; 
+        P2.topo=0;
+
+        empilha(10, &P1);
+        empilha(8, &P1);
+        empilha(9, &P1);
+
+        inverte_pilha(&P1, &P2); 
+
+}
+
+----------------------------------------------------------------------
+# QUESTAO 9
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#include<stdbool.h>
+
+#define TAMANHO_PILHA 20
+
+typedef struct{
+
+        int vetor[TAMANHO_PILHA]; //tamanho da pilha
+
+        int topo;
+
+}Pilha;
+
+
+//prototipo da função empilha
+
+void empilha(int valor,Pilha *P1){
+
+        //pilha->topo significa: ponteiro "pilha" apontando para CONTEÚDO de um item de uma struct
+
+        if(P1->topo < TAMANHO_PILHA){ //verificando se a pilha não está cheia
+
+        //daí pode empilhar
+
+        P1->vetor[P1->topo]=valor;
+
+        P1->topo++;
+
+        printf("O valor %d foi adicionado \n",valor);
+
+        }else{
+
+                printf("Nao ha mais espaco na pilha, \n");
+
+        }
+
+}
+
+void desempilha(Pilha *P1){
+
+        if(P1->topo > 0){
+
+                P1->topo--; //desempilha
+
+                printf("Elemento retirado: %d. \n",P1->vetor[P1->topo]);
+
+        }else{
+
+                printf("A pilha está vazia. \n"); //pilha vazia
+
+        }
+
+}
+
+void imprimePilha(Pilha *P1){
+
+        int i;
+
+        printf("\nSegue Impressao da Pilha: \n");
+
+        for(i=((P1->topo)-1);i>=0;i--){ //valor inicial de i é a ultima posição da pilha e daí decrementa
+
+                printf("\t %d \n",P1->vetor[i]);
+
+        }
+
+}
+
+
+bool verifica_ordem_crescente(Pilha *p1){
+        // t de true
+        int t = 0;
+        for(int i = 0; i<=p1->topo-1; i++){
+                if(p1->vetor[i] <= p1->vetor[i+1]){
+                        t++;
+                } else {
+                        break;
+                }
+        }
+        if(t == p1->topo){
+                printf("A pilha esta em ordem crescente");
+                return true;
+        } else {
+                printf("A pilha NAO esta em ordem crescente");
+                return false;
+        }
+}
+
+
+int main() {
+
+        //DECLARA UMA PILHA
+
+        Pilha P1;
+
+        P1.topo=0; // o topo da pilha deve começar em zero
+        
+        // crescente
+        empilha(8, &P1);
+        empilha(9, &P1);
+        empilha(10, &P1);
+
+        
+        // decrescente
+        //empilha(10, &P1);
+        //empilha(9, &P1);
+        //empilha(8, &P1);
+
+        verifica_ordem_crescente(&P1);
+
+}
+
+----------------------------------------------------------------------
+# QUESTAO 10
+
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#define TAMANHO_PILHA 20
+
+typedef struct{
+
+        int vetor[TAMANHO_PILHA]; //tamanho da pilha
+
+        int topo;
+
+}Pilha;
+
+
+//prototipo da função empilha
+
+void empilha(int valor,Pilha *P){
+
+        //pilha->topo significa: ponteiro "pilha" apontando para CONTEÚDO de um item de uma struct
+
+        if(P->topo < TAMANHO_PILHA){ //verificando se a pilha não está cheia
+
+        //daí pode empilhar
+
+        P->vetor[P->topo]=valor;
+
+        P->topo++;
+
+        printf("O valor %d foi adicionado \n",valor);
+
+        }else{
+
+                printf("Nao ha mais espaco na pilha, \n");
+
+        }
+
+}
+
+void desempilha(Pilha *P1){
+
+        if(P1->topo > 0){
+
+                P1->topo--; //desempilha
+
+                printf("Elemento retirado: %d. \n",P1->vetor[P1->topo]);
+
+        }else{
+
+                printf("A pilha está vazia. \n"); //pilha vazia
+
+        }
+
+}
+
+void imprimePilha(Pilha *P){
+
+        int i;
+
+        printf("\nSegue Impressao da Pilha: \n");
+
+        for(i=((P->topo)-1);i>=0;i--){ //valor inicial de i é a ultima posição da pilha e daí decrementa
+
+                printf(" %02d \n",P->vetor[i]);
+
+        }
+
+}
+
+
+void intercala_pilhas(Pilha *p1, Pilha *p2, Pilha *p3){
+        int iter_1 = 0, iter_2 = 0;
+
+        while (iter_1 <= p1->topo-1 || iter_2 <= p2->topo-1) {
+                if (iter_1 <= p1->topo) {
+                        empilha(p1->vetor[iter_1], p3);
+                        iter_1++;
+                }
+                if (iter_2 <= p2->topo) {
+                        empilha(p2->vetor[iter_2], p3);
+                        iter_2++;
+                }
+                
+        }
+}
+
+
+int main() {
+
+        //DECLARA UMA PILHA
+
+        Pilha P1;
+        Pilha P2;
+        Pilha P3;
+
+        // o topo da pilha deve começar em zero
+        P1.topo=0; 
+        P2.topo=0; 
+        P3.topo=0; 
+
+
+        empilha(10, &P1);
+        empilha(20, &P1);
+        empilha(30, &P1);
+        empilha(40, &P1);
+        empilha(68, &P1);
+
+        
+        empilha(50, &P2);
+        empilha(70, &P2);
+        empilha(80, &P2);
+        empilha(90, &P2);
+        empilha(95, &P2);
+        empilha(99, &P2);
+
+        intercala_pilhas(&P1, &P2, &P3);
+
+        // Nao consegui resolver a impressao dos lixos de memoria
+        // ele imprime o lixo de memoria assim que a pilha nao possui um valor atribuido a posição
+        imprimePilha(&P3);
+
+
+}
